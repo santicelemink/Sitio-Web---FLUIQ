@@ -4,7 +4,15 @@
 (function () {
   "use strict";
 
+  // JS activo: quitar clase no-js para habilitar estilos dependientes de JS
+  document.documentElement.classList.remove('no-js');
+
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // --- Anti-bot: tiempo de carga y rate-limiting ---
+  var pageLoadTime = Date.now();
+  var lastSubmitTime = 0;
+  var SUBMIT_COOLDOWN_MS = 30000;
 
   /* ---------- Header sticky + barra de progreso ---------- */
   var header = document.getElementById("header");
@@ -266,12 +274,19 @@
     progressBars.forEach(function (b, i) { b.classList.toggle("done", i <= Math.min(n, 2)); });
   }
 
+  var modalCard = modal.querySelector('.modal__card');
+
   function openModal() {
     lastFocused = document.activeElement;
     showStep(0);
     modal.classList.add("is-open");
     document.body.style.overflow = "hidden";
     closeMobile();
+    // Enfocar primer elemento interactivo al abrir
+    setTimeout(function () {
+      var first = modalCard.querySelector('button:not([disabled]), input, textarea');
+      if (first) first.focus();
+    }, 60);
   }
   function closeModal() {
     modal.classList.remove("is-open");
@@ -286,7 +301,22 @@
     b.addEventListener("click", closeModal);
   });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+    if (e.key === "Escape" && modal.classList.contains("is-open")) { closeModal(); return; }
+
+    // Focus trap: mantener el foco dentro del modal mientras está abierto
+    if (e.key === "Tab" && modal.classList.contains("is-open")) {
+      var focusable = Array.prototype.slice.call(
+        modalCard.querySelectorAll('button:not([disabled]), input:not([tabindex="-1"]), textarea, [tabindex]:not([tabindex="-1"])')
+      ).filter(function (el) { return el.offsetParent !== null; });
+      if (focusable.length < 2) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    }
   });
 
   modal.querySelectorAll("[data-next]").forEach(function (b) {
@@ -310,7 +340,8 @@
     var val = input.value.trim();
     var ok = val.length > 0;
     if (input.type === "email") {
-      ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      // Validación RFC 5321 simplificada (más estricta que la anterior)
+      ok = val.length >= 6 && /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(val);
     }
     field.classList.toggle("is-invalid", !ok);
     return ok;
@@ -320,10 +351,18 @@
     if (!form) return;
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      // Anti-spam: campo trampa (honeypot). Si viene completo, es un bot:
-      // cortamos en silencio sin dar feedback ni procesar nada.
+
+      // 1. Honeypot: campo trampa completado = bot, descartar en silencio
       var honeypot = form.querySelector("[data-hp]");
       if (honeypot && honeypot.value.trim() !== "") return;
+
+      // 2. Velocidad de llenado: < 1.5 s desde carga de página = probable bot
+      if (Date.now() - pageLoadTime < 1500) return;
+
+      // 3. Rate-limiting: evitar envíos repetidos en menos de 30 s
+      var now = Date.now();
+      if (now - lastSubmitTime < SUBMIT_COOLDOWN_MS) return;
+
       var fields = Array.prototype.slice.call(form.querySelectorAll(".field"));
       var valid = true;
       fields.forEach(function (f) { if (!validateField(f)) valid = false; });
@@ -332,6 +371,8 @@
         if (firstBad) firstBad.focus();
         return;
       }
+
+      lastSubmitTime = now;
       onSuccess();
     });
     // limpiar error al escribir
