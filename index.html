@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="es-AR">
+<html lang="es-AR" class="no-js">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- ============================ SEGURIDAD ============================
-  Capas aplicables desde el documento. Las cabeceras a nivel servidor
-  (HSTS, X-Frame-Options, X-Content-Type-Options, Permissions-Policy)
-  deben configurarse ADEMÁS en el hosting; ver nota al pie del archivo. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; upgrade-insecure-requests" />
+  Capas aplicables desde el documento. Las cabeceras HTTP a nivel servidor
+  deben configurarse ADEMÁS en el hosting (ver archivo _headers / nota al pie):
+    - Strict-Transport-Security  (HSTS)
+    - X-Frame-Options: DENY
+    - X-Content-Type-Options: nosniff
+    - Permissions-Policy
+  El meta CSP incluye frame-ancestors 'none' pero solo es efectivo como
+  cabecera HTTP; se mantiene aquí como documentación de la política deseada. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+<meta name="theme-color" content="#1B3A5C" />
 <title>FLUIQ — Transformamos la complejidad operativa en fluidez</title>
 <meta name="description" content="FLUIQ diseña el ecosistema digital que tu consultora necesita para crecer sin caos, sin depender de una sola persona y con visibilidad real de tus números." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -83,7 +89,7 @@
       <div class="prob__head">
         <span class="eyebrow reveal">El punto de partida</span>
         <h2 class="h2 reveal" data-delay="1">Tu consultora creció en facturación y equipo.<br />Los procesos no acompañaron.</h2>
-        <p class="lead reveal" data-delay="2" style="margin-top:1.4rem">Herramientas dispersas, información viviendo en Excel, dependencia de personas clave y cero visibilidad en tiempo real de la rentabilidad. El crecimiento dejó de sentirse como progreso y empezó a sentirse como fricción.</p>
+        <p class="lead reveal lead--mt" data-delay="2">Herramientas dispersas, información viviendo en Excel, dependencia de personas clave y cero visibilidad en tiempo real de la rentabilidad. El crecimiento dejó de sentirse como progreso y empezó a sentirse como fricción.</p>
       </div>
       <div class="prob__grid">
         <article class="pcard reveal" data-delay="1">
@@ -240,11 +246,11 @@
           <div class="metric__label">Automatizaciones autónomas activas</div>
         </div>
         <div class="metric reveal" data-delay="3">
-          <div class="metric__num accent" style="font-size:clamp(1.5rem,2.4vw,2rem); line-height:1.15">Tiempo real</div>
+          <div class="metric__num accent metric__num--sm">Tiempo real</div>
           <div class="metric__label">Visibilidad de rentabilidad</div>
         </div>
         <div class="metric reveal" data-delay="4">
-          <div class="metric__num accent" style="font-size:clamp(1.5rem,2.4vw,2rem); line-height:1.15">Prefacturación<br />automática</div>
+          <div class="metric__num accent metric__num--sm">Prefacturación<br />automática</div>
           <div class="metric__label">Sin cargas ni errores manuales</div>
         </div>
       </div>
@@ -263,7 +269,7 @@
   <section class="section section--gray stack" id="stack">
     <div class="container">
       <div class="stack__head">
-        <span class="eyebrow reveal" style="justify-content:center; display:flex">Trabajamos con</span>
+        <span class="eyebrow reveal eyebrow--center">Trabajamos con</span>
         <h2 class="h2 reveal" data-delay="1">El stack con el que construimos.</h2>
         <p class="lead reveal" data-delay="2">Herramientas que ya conocés, integradas con criterio. Elegimos en cada caso las que mejor se adaptan a tu contexto, sin sumar complejidad.</p>
       </div>
@@ -317,7 +323,7 @@
   <!-- ============================ PARA QUIÉN ============================ -->
   <section class="section section--white" id="paraquien">
     <div class="container forwho">
-      <span class="eyebrow reveal" style="justify-content:center; display:flex">Para quién es</span>
+      <span class="eyebrow reveal eyebrow--center">Para quién es</span>
       <p class="forwho__statement reveal" data-delay="1">FLUIQ es para vos si dirigís una consultora, sentís que el crecimiento te está generando <span class="hl">caos operativo</span>, y querés dar el salto tecnológico con un partner que entienda tu negocio.</p>
       <div class="forwho__chips">
         <span class="chip reveal" data-delay="1">Equipos de 10 a 60 personas</span>
@@ -364,9 +370,9 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3 0 .2 0 .7-.2 1.2Z"/></svg>
             <div><span>WhatsApp</span><b>Escribinos directo</b></div>
           </a>
-          <a class="contact__row" href="mailto:santicelemink@gmail.com">
+          <a class="contact__row" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#97;&#110;&#116;&#105;&#99;&#101;&#108;&#101;&#109;&#105;&#110;&#107;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            <div><span>Email</span><b>santicelemink@gmail.com</b></div>
+            <div><span>Email</span><b>&#115;&#97;&#110;&#116;&#105;&#99;&#101;&#108;&#101;&#109;&#105;&#110;&#107;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</b></div>
           </a>
           <a class="contact__row" href="https://www.linkedin.com/in/santiago-celemin-635a7622a" target="_blank" rel="noopener noreferrer nofollow">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 5.9V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9V9Z"/></svg>
@@ -429,7 +435,7 @@
         <a href="#porque">Por qué FLUIQ</a>
         <a href="#metodo">The FLUIQ Method</a>
         <a href="#caso">Caso real</a>
-        <a href="mailto:santicelemink@gmail.com">Contacto</a>
+        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#97;&#110;&#116;&#105;&#99;&#101;&#108;&#101;&#109;&#105;&#110;&#107;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">Contacto</a>
       </nav>
     </div>
     <div class="footer__bottom">
@@ -506,13 +512,13 @@
 
     <!-- Éxito -->
     <div class="modal__step" data-step="3">
-      <div class="form__success is-shown" style="padding-top:0.5rem">
+      <div class="form__success form__success--modal is-shown">
         <div class="tick">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
         <h3>Gracias. Estamos en contacto.</h3>
         <p>Recibimos tus datos y te vamos a escribir en las próximas horas para coordinar la conversación.</p>
-        <button class="btn btn--ghost" data-modal-close style="margin-top:1.6rem">Cerrar</button>
+        <button class="btn btn--ghost" data-modal-close>Cerrar</button>
       </div>
     </div>
   </div>
@@ -521,21 +527,42 @@
 <script src="script.js"></script>
 
 <!-- ============================================================
-  NOTA DE SEGURIDAD — pendiente de configurar en el HOSTING/SERVIDOR
-  (no puede hacerse desde este archivo, requiere cabeceras HTTP):
+  SEGURIDAD — RESUMEN DE CAPAS IMPLEMENTADAS
 
-   1. HTTPS obligatorio + redirección 301 de http:// a https://
-   2. Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-   3. X-Content-Type-Options: nosniff
-   4. X-Frame-Options: DENY          (evita clickjacking / embebido en iframes)
-   5. Referrer-Policy: strict-origin-when-cross-origin
-   6. Permissions-Policy: geolocation=(), camera=(), microphone=()
-   7. Si los formularios se conectan a un backend: validar y sanitizar SIEMPRE
-      del lado del servidor, sumar token CSRF y rate-limiting / captcha.
+  EN ESTE DOCUMENTO (client-side):
+   ✓ CSP estricta sin 'unsafe-inline' (style-src limpio, frame-ancestors 'none')
+   ✓ Referrer-Policy: strict-origin-when-cross-origin
+   ✓ Clase no-js para degradación sin JavaScript
+   ✓ Honeypot anti-bot (campo trampa oculto en ambos formularios)
+   ✓ Detección de velocidad de llenado (bots < 1.5 s = descartados)
+   ✓ Rate-limiting client-side (30 s entre envíos)
+   ✓ Validación de email robusta (RFC 5321 simplificado)
+   ✓ maxlength en todos los campos
+   ✓ rel="noopener noreferrer nofollow" en todos los enlaces externos
+   ✓ Ofuscación de email con entidades HTML (&#..;) contra scrapers
+   ✓ Focus trap en modal (accesibilidad + seguridad de navegación)
+   ✓ theme-color declarado
 
-  En el documento ya están aplicados: CSP, Referrer-Policy, honeypot anti-bot,
-  límites de longitud, rel="noopener noreferrer" en enlaces externos y
-  validación de entrada del lado del cliente.
+  EN EL SERVIDOR / HOSTING (ver _headers y netlify.toml):
+   ✓ Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+   ✓ X-Frame-Options: DENY
+   ✓ X-Content-Type-Options: nosniff
+   ✓ Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()
+   ✓ Content-Security-Policy (duplica la del meta, pero con autoridad HTTP)
+   ✓ Redirección HTTPS 301 de http:// a https://
+
+  BACKEND (netlify/functions/lead.js — ver BACKEND.md):
+   ✓ Validación y saneo de entrada del lado del servidor
+   ✓ Honeypot + chequeo de velocidad de llenado server-side
+   ✓ Rate-limiting por IP (máx. 3/min) vía Supabase
+   ✓ Límite de payload (8 KB), verificación de método y JSON
+   ✓ Escape de HTML en el email (anti-inyección)
+   ✓ Notificación por email (Resend) + almacenamiento en Supabase
+   ✓ Secretos solo en variables de entorno, RLS activado en la tabla
+
+  PENDIENTE (mejoras futuras):
+   - Token CSRF / firma del payload
+   - CAPTCHA (si aumenta el spam pese al honeypot)
 ============================================================ -->
 </body>
 </html>

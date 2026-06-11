@@ -790,6 +790,21 @@ button { font-family: inherit; cursor: pointer; }
 .form .btn { margin-top: 0.6rem; }
 .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 
+/* Mensaje de error global del formulario (fallos de red / backend) */
+.form__error {
+  display: none;
+  margin: 0 0 0.4rem;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #F0A07E;
+  background: rgba(232, 112, 58, 0.1);
+  border: 1px solid rgba(232, 112, 58, 0.4);
+  border-radius: var(--radius-sm);
+}
+.form__error.is-shown { display: block; }
+.form--card .form__error { color: var(--orange-600); background: rgba(232, 112, 58, 0.08); }
+
 .form__success {
   display: none;
   text-align: center;
@@ -944,8 +959,9 @@ button { font-family: inherit; cursor: pointer; }
   transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease);
 }
 .opt:hover { border-color: var(--orange); background: rgba(232, 112, 58, 0.1); transform: translateX(3px); }
+.opt.is-selected { border-color: var(--orange); background: rgba(232, 112, 58, 0.14); }
 .opt::after { content: "→"; color: var(--orange); opacity: 0; transition: opacity 0.25s var(--ease); }
-.opt:hover::after { opacity: 1; }
+.opt:hover::after, .opt.is-selected::after { opacity: 1; }
 
 .modal .form__row { grid-template-columns: 1fr 1fr; }
 .modal .field input,
@@ -991,6 +1007,13 @@ button { font-family: inherit; cursor: pointer; }
   .scrollbar, .scroll-cue, .header { position: static; }
 }
 .no-js .reveal { opacity: 1; transform: none; }
+
+/* Clases de reemplazo para estilos inline (necesario para CSP sin 'unsafe-inline') */
+.lead--mt            { margin-top: 1.4rem; }
+.metric__num--sm     { font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.15; }
+.eyebrow--center     { display: flex; justify-content: center; }
+.form__success--modal{ padding-top: 0.5rem; }
+.form__success .btn  { margin-top: 1.6rem; }
 
 /* ============================================================
    RESPONSIVE

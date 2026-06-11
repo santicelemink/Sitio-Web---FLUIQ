@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /.git/
+Disallow: /.well-known/
+
+# Bloquear rastreadores de herramientas de seguridad comunes
+User-agent: sqlmap
+Disallow: /
+
+User-agent: nikto
+Disallow: /
+
+User-agent: nmap
+Disallow: /
