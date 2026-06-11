@@ -51,6 +51,19 @@
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
+/* Ocultar la barra de scroll del navegador (el scroll sigue funcionando
+   con rueda, trackpad, teclado y touch). */
+html {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE / Edge antiguo */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;                /* Chrome, Safari, Edge */
+}
+
 body {
   margin: 0;
   font-family: var(--sans);
