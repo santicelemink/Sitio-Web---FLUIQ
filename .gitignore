@@ -1,0 +1,15 @@
+# Variables de entorno (¡nunca subir secretos!)
+.env
+.env.*
+!.env.example
+
+# Dependencias
+node_modules/
+
+# Netlify
+.netlify/
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log

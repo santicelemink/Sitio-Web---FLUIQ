@@ -14,6 +14,11 @@
   var lastSubmitTime = 0;
   var SUBMIT_COOLDOWN_MS = 30000;
 
+  // --- Backend ---
+  var LEAD_ENDPOINT = "/api/lead";
+  // Respuestas del quiz del modal (tamaño + punto de fricción)
+  var modalAnswers = { tamano: "", dolor: "" };
+
   /* ---------- Header sticky + barra de progreso ---------- */
   var header = document.getElementById("header");
   var scrollbar = document.getElementById("scrollbar");
@@ -321,9 +326,15 @@
 
   modal.querySelectorAll("[data-next]").forEach(function (b) {
     b.addEventListener("click", function () {
+      // registrar la respuesta elegida para enviarla al backend
+      var key = b.getAttribute("data-answer");
+      if (key && modalAnswers.hasOwnProperty(key)) {
+        modalAnswers[key] = (b.textContent || "").trim();
+      }
       // marcar selección visual
       var siblings = b.parentElement.querySelectorAll(".opt");
-      siblings.forEach(function (s) { s.style.borderColor = ""; });
+      siblings.forEach(function (s) { s.classList.remove("is-selected"); });
+      b.classList.add("is-selected");
       if (currentStep < 2) showStep(currentStep + 1);
     });
   });
@@ -347,10 +358,42 @@
     return ok;
   }
 
+  function setFormError(form, msg) {
+    var box = form.querySelector(".form__error");
+    if (!box) {
+      box = document.createElement("div");
+      box.className = "form__error";
+      box.setAttribute("role", "alert");
+      var submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.parentNode.insertBefore(box, submitBtn);
+      else form.appendChild(box);
+    }
+    box.textContent = msg || "";
+    box.classList.toggle("is-shown", !!msg);
+  }
+
+  function sendLead(payload) {
+    return fetch(LEAD_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      return res.json().then(function (body) {
+        return { ok: res.ok && body && body.ok, status: res.status, body: body || {} };
+      }).catch(function () {
+        return { ok: res.ok, status: res.status, body: {} };
+      });
+    });
+  }
+
   function wireForm(form, onSuccess) {
     if (!form) return;
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var btnLabel = submitBtn ? submitBtn.innerHTML : "";
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      setFormError(form, "");
 
       // 1. Honeypot: campo trampa completado = bot, descartar en silencio
       var honeypot = form.querySelector("[data-hp]");
@@ -361,7 +404,10 @@
 
       // 3. Rate-limiting: evitar envíos repetidos en menos de 30 s
       var now = Date.now();
-      if (now - lastSubmitTime < SUBMIT_COOLDOWN_MS) return;
+      if (now - lastSubmitTime < SUBMIT_COOLDOWN_MS) {
+        setFormError(form, "Recién enviaste un mensaje. Esperá unos segundos.");
+        return;
+      }
 
       var fields = Array.prototype.slice.call(form.querySelectorAll(".field"));
       var valid = true;
@@ -372,9 +418,44 @@
         return;
       }
 
-      lastSubmitTime = now;
-      onSuccess();
+      // Recolectar datos
+      function val(name) {
+        var el = form.querySelector('[name="' + name + '"]');
+        return el ? el.value.trim() : "";
+      }
+      var payload = {
+        nombre: val("nombre"),
+        email: val("email"),
+        consultora: val("consultora"),
+        mensaje: val("mensaje"),
+        tamano: modalAnswers.tamano,
+        dolor: modalAnswers.dolor,
+        origen: form.id === "modalForm" ? "modal" : "seccion",
+        website: honeypot ? honeypot.value : "",
+        elapsedMs: Date.now() - pageLoadTime
+      };
+
+      // Estado de carga
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = "Enviando…"; }
+
+      sendLead(payload).then(function (result) {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = btnLabel; }
+        if (result.ok) {
+          lastSubmitTime = Date.now();
+          onSuccess();
+        } else if (result.status === 429) {
+          setFormError(form, "Demasiados envíos. Probá de nuevo en un minuto.");
+        } else if (result.status === 422) {
+          setFormError(form, "Revisá los datos ingresados.");
+        } else {
+          setFormError(form, "No pudimos enviar tu mensaje. Escribinos por WhatsApp y lo resolvemos.");
+        }
+      }).catch(function () {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = btnLabel; }
+        setFormError(form, "Hubo un problema de conexión. Probá de nuevo o escribinos por WhatsApp.");
+      });
     });
+
     // limpiar error al escribir
     form.querySelectorAll("input, textarea").forEach(function (inp) {
       inp.addEventListener("input", function () {

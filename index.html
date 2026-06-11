@@ -543,7 +543,7 @@
    ✓ Focus trap en modal (accesibilidad + seguridad de navegación)
    ✓ theme-color declarado
 
-  EN EL SERVIDOR / HOSTING (ver archivo _headers):
+  EN EL SERVIDOR / HOSTING (ver _headers y netlify.toml):
    ✓ Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
    ✓ X-Frame-Options: DENY
    ✓ X-Content-Type-Options: nosniff
@@ -551,12 +551,18 @@
    ✓ Content-Security-Policy (duplica la del meta, pero con autoridad HTTP)
    ✓ Redirección HTTPS 301 de http:// a https://
 
-  PENDIENTE (requiere backend):
-   - Token CSRF
-   - Validación y sanitización server-side
-   - Rate-limiting real (IP-based)
-   - CAPTCHA
-   - Almacenamiento real de los datos del formulario
+  BACKEND (netlify/functions/lead.js — ver BACKEND.md):
+   ✓ Validación y saneo de entrada del lado del servidor
+   ✓ Honeypot + chequeo de velocidad de llenado server-side
+   ✓ Rate-limiting por IP (máx. 3/min) vía Supabase
+   ✓ Límite de payload (8 KB), verificación de método y JSON
+   ✓ Escape de HTML en el email (anti-inyección)
+   ✓ Notificación por email (Resend) + almacenamiento en Supabase
+   ✓ Secretos solo en variables de entorno, RLS activado en la tabla
+
+  PENDIENTE (mejoras futuras):
+   - Token CSRF / firma del payload
+   - CAPTCHA (si aumenta el spam pese al honeypot)
 ============================================================ -->
 </body>
 </html>

@@ -1,0 +1,9 @@
+{
+  "name": "fluiq-sitio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio FLUIQ — landing + backend serverless de captura de leads",
+  "engines": {
+    "node": ">=18"
+  }
+}
