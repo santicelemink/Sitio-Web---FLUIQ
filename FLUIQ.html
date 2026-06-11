@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- ============================ SEGURIDAD ============================
+  Capas aplicables desde el documento. Las cabeceras a nivel servidor
+  (HSTS, X-Frame-Options, X-Content-Type-Options, Permissions-Policy)
+  deben configurarse ADEMÁS en el hosting; ver nota al pie del archivo. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="robots" content="index, follow" />
+<title>FLUIQ — Transformamos la complejidad operativa en fluidez</title>
+<meta name="description" content="FLUIQ diseña el ecosistema digital que tu consultora necesita para crecer sin caos, sin depender de una sola persona y con visibilidad real de tus números." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="scrollbar" id="scrollbar"></div>
+
+<!-- ============================ HEADER ============================ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#top" class="brand" aria-label="FLUIQ — inicio">FLUI<b>Q</b></a>
+    <nav class="nav" aria-label="Principal">
+      <div class="nav__links">
+        <a class="nav__link" href="#porque" data-spy="porque">Por qué FLUIQ</a>
+        <a class="nav__link" href="#metodo" data-spy="metodo">The FLUIQ Method</a>
+        <a class="nav__link" href="#caso" data-spy="caso">Caso real</a>
+      </div>
+      <button class="btn nav__cta" data-modal-open>Hablemos</button>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#porque">Por qué FLUIQ</a>
+    <a href="#metodo">The FLUIQ Method</a>
+    <a href="#caso">Caso real</a>
+    <button class="btn btn--block" data-modal-open>Hablemos</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow reveal">Consultoría de transformación digital</span>
+        <h1 class="hero__title reveal" data-delay="1">Transformamos la complejidad operativa en <span class="accent">fluidez.</span></h1>
+        <p class="hero__sub reveal" data-delay="2">Diseñamos el ecosistema digital que tu consultora necesita para crecer sin caos, sin depender de una sola persona y con visibilidad real de tus números.</p>
+        <div class="hero__actions reveal" data-delay="3">
+          <button class="btn btn--lg" data-modal-open>Agendá una conversación <span class="arrow">→</span></button>
+          <a class="btn btn--ghost btn--lg" href="#metodo">Ver el método</a>
+        </div>
+        <div class="hero__meta reveal" data-delay="4">
+          <div><b>10 – 60</b><span>Personas en tu equipo</span></div>
+          <div><b>6 - 10</b><span>Semanas de implementación</span></div>
+          <div><b>Tiempo real</b><span>Visibilidad de tus números</span></div>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal" data-delay="2" aria-hidden="true">
+        <!-- Circuito abstracto (evoca el isotipo sin usarlo) -->
+        <svg class="circuit" viewBox="0 0 480 480" id="circuit">
+          <g id="traces"></g>
+          <g id="nodes"></g>
+          <g id="pulses"></g>
+        </svg>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><i></i>Scroll</div>
+  </section>
+
+  <!-- ============================ PROBLEMA ============================ -->
+  <section class="section section--gray" id="problema">
+    <div class="container">
+      <div class="prob__head">
+        <span class="eyebrow reveal">El punto de partida</span>
+        <h2 class="h2 reveal" data-delay="1">Tu consultora creció en facturación y equipo.<br />Los procesos no acompañaron.</h2>
+        <p class="lead reveal" data-delay="2" style="margin-top:1.4rem">Herramientas dispersas, información viviendo en Excel, dependencia de personas clave y cero visibilidad en tiempo real de la rentabilidad. El crecimiento dejó de sentirse como progreso y empezó a sentirse como fricción.</p>
+      </div>
+      <div class="prob__grid">
+        <article class="pcard reveal" data-delay="1">
+          <div class="pcard__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="7" height="7" rx="1"/><rect x="14" y="4" width="7" height="7" rx="1"/><rect x="3" y="15" width="7" height="5" rx="1"/><rect x="14" y="15" width="7" height="5" rx="1"/></svg>
+          </div>
+          <h3>Herramientas dispersas</h3>
+          <p>Cada área usa su propia app. Nada conversa entre sí y la información se duplica.</p>
+        </article>
+        <article class="pcard reveal" data-delay="2">
+          <div class="pcard__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+          </div>
+          <h3>Todo vive en Excel</h3>
+          <p>Planillas que hacen de todo y no hacen nada bien. Frágiles, manuales y sin trazabilidad.</p>
+        </article>
+        <article class="pcard reveal" data-delay="3">
+          <div class="pcard__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>
+          </div>
+          <h3>Dependencia de personas</h3>
+          <p>El proceso vive en la cabeza de alguien. Si esa persona no está, el área se frena.</p>
+        </article>
+        <article class="pcard reveal" data-delay="4">
+          <div class="pcard__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 2 4-6"/></svg>
+          </div>
+          <h3>Sin visibilidad real</h3>
+          <p>Te enterás de la rentabilidad cuando ya pasó. Decidís con datos de hace un mes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ POR QUÉ FLUIQ ============================ -->
+  <section class="section section--white" id="porque">
+    <div class="container">
+      <div class="why__top">
+        <h2 class="h2 reveal">No vendemos herramientas. Diseñamos <span class="accent serif-italic">transformación.</span></h2>
+        <p class="why__lead reveal" data-delay="1">FLUIQ entiende la operación desde adentro antes de proponer nada. Soluciones a medida, modulares, que tu equipo puede sostener solo. Un enfoque progresivo y ordenado, sin parálisis por análisis.</p>
+      </div>
+      <div class="why__grid">
+        <article class="diff reveal" data-delay="1">
+          <div class="diff__num">01</div>
+          <h3>Entendemos tu negocio desde adentro</h3>
+          <p>Antes de tocar una herramienta, mapeamos cómo trabaja realmente tu consultora. La solución nace de tu operación, no de un catálogo.</p>
+        </article>
+        <article class="diff reveal" data-delay="2">
+          <div class="diff__num">02</div>
+          <h3>Implementación por sprints con entregables concretos</h3>
+          <p>Avanzamos en ciclos cortos. Cada sprint deja algo funcionando en tu empresa, no una promesa para dentro de seis meses.</p>
+        </article>
+        <article class="diff reveal" data-delay="3">
+          <div class="diff__num">03</div>
+          <h3>IA aplicada a procesos reales, no humo</h3>
+          <p>Automatización e inteligencia artificial donde mueven la aguja: tareas repetitivas, control de rentabilidad y decisiones con datos.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ MÉTODO ============================ -->
+  <section class="section section--navy" id="metodo">
+    <div class="container">
+      <div class="method__head">
+        <div>
+          <span class="eyebrow reveal">Nuestra forma de trabajar</span>
+          <h2 class="h2 reveal" data-delay="1">The FLUIQ Method</h2>
+        </div>
+        <p class="reveal" data-delay="2">Un recorrido ordenado y progresivo. Cada etapa resuelve un problema real y prepara la siguiente, sin saltos al vacío ni dependencia de nosotros.</p>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <div class="timeline__fill" id="timelineFill"></div>
+
+        <div class="step reveal">
+          <div class="step__node">01</div>
+          <div class="step__body">
+            <div class="step__title-row">
+              <h3>Relevamiento</h3>
+            </div>
+            <p>Entendemos cómo funciona realmente tu organización, no cómo creés que funciona. Reuniones estructuradas que transcribimos y procesamos para extraer los dolores reales y las oportunidades que muchas veces ni se habían verbalizado. Además calculamos cuánto te cuesta hoy no estar automatizado, para que el valor de cada propuesta parta de tus propios números.</p>
+            <div class="step__receive"><span>Recibís</span>Documento de puntos clave en tu propia voz + cálculo de costos de la ineficiencia actual.</div>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step__node">02</div>
+          <div class="step__body">
+            <div class="step__title-row">
+              <h3>Diagnóstico estratégico</h3>
+            </div>
+            <p>Identificamos cuellos de botella, redundancias, fricciones y dependencias críticas. No diagnosticamos herramientas: diagnosticamos procesos y estructura. Tenés acceso permanente a una sala de operaciones compartida en Notion donde ves el estado del diagnóstico y las decisiones en tiempo real, sin reuniones de seguimiento innecesarias.</p>
+            <div class="step__receive"><span>Recibís</span>Mapa de problemas priorizados por impacto + sala de operaciones en vivo.</div>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step__node">03</div>
+          <div class="step__body">
+            <div class="step__title-row">
+              <h3>Diseño de la solución</h3>
+            </div>
+            <p>Una propuesta clara, visual y por sprints donde cada parte resuelve un problema real identificado en el diagnóstico. Soluciones a medida, modulares, pensadas para integrarse a la cultura de tu equipo. Nada genérico, nada que no puedas sostener por tu cuenta.</p>
+            <div class="step__receive"><span>Recibís</span>Propuesta por sprints con mapa de flujos y priorización por impacto.</div>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step__node">04</div>
+          <div class="step__body">
+            <div class="step__title-row">
+              <h3>Implementación acompañada</h3>
+            </div>
+            <p>Ejecutamos la solución junto a tu equipo, asegurándonos de que entiendan lo que se implementa y puedan operarlo sin depender de FLUIQ para cada cosa. Usamos las herramientas que mejor se adaptan a tu contexto, sin agregar complejidad innecesaria.</p>
+            <div class="step__receive"><span>Recibís</span>El sistema funcionando y tu equipo capacitado para usarlo.</div>
+          </div>
+        </div>
+
+        <div class="step reveal">
+          <div class="step__node">05</div>
+          <div class="step__body">
+            <div class="step__title-row">
+              <h3>Evolución continua</h3>
+            </div>
+            <p>Una vez implementado, revisamos el sistema con mirada de expansión: qué otras áreas pueden beneficiarse, qué procesos quedaron listos para escalar. No es un cierre, es el inicio de una relación de largo plazo donde FLUIQ sigue siendo tu socio operativo.</p>
+            <div class="step__receive"><span>Recibís</span>Un sistema vivo que crece con vos.</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="method__tagline reveal">Claridad operativa, sin fricción ni desperdicio.</p>
+    </div>
+  </section>
+
+  <!-- ============================ CASO SAPCESS ============================ -->
+  <section class="section section--gray" id="caso">
+    <div class="container">
+      <div class="case__head">
+        <div>
+          <span class="eyebrow reveal">Caso real</span>
+          <h2 class="h2 reveal" data-delay="1">Cómo una consultora SAP pasó de Excel y listas sueltas a un ecosistema digital integrado.</h2>
+        </div>
+        <span class="case__logo reveal" data-delay="2"><i></i>SAPCESS</span>
+      </div>
+
+      <div class="metrics">
+        <div class="metric reveal" data-delay="1">
+          <div class="metric__num"><span class="accent">+</span><span class="count" data-to="12">0</span> hs</div>
+          <div class="metric__label">Manuales eliminadas por semana</div>
+        </div>
+        <div class="metric reveal" data-delay="2">
+          <div class="metric__num"><span class="count" data-to="7">0</span></div>
+          <div class="metric__label">Automatizaciones autónomas activas</div>
+        </div>
+        <div class="metric reveal" data-delay="3">
+          <div class="metric__num accent" style="font-size:clamp(1.5rem,2.4vw,2rem); line-height:1.15">Tiempo real</div>
+          <div class="metric__label">Visibilidad de rentabilidad</div>
+        </div>
+        <div class="metric reveal" data-delay="4">
+          <div class="metric__num accent" style="font-size:clamp(1.5rem,2.4vw,2rem); line-height:1.15">Prefacturación<br />automática</div>
+          <div class="metric__label">Sin cargas ni errores manuales</div>
+        </div>
+      </div>
+
+      <div class="case__story">
+        <p class="reveal">Antes, la operación dependía de una planilla central que concentraba todo y no daba abasto: información duplicada, cargas manuales y nadie con una foto clara de la rentabilidad. Hoy SAPCESS trabaja sobre un ecosistema digital integrado donde cada persona ve exactamente lo que necesita y buena parte del trabajo operativo sucede solo, en segundo plano.</p>
+        <div class="case__quote reveal" data-delay="1">
+          <blockquote>“Antes teníamos un Excel que hacía de todo y no hacía nada bien. Ahora tenemos un ecosistema profesional donde cada persona ve lo que necesita y el sistema trabaja solo.”</blockquote>
+          <cite><b>Dirección</b> · Consultora SAPCESS</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ STACK ============================ -->
+  <section class="section section--gray stack" id="stack">
+    <div class="container">
+      <div class="stack__head">
+        <span class="eyebrow reveal" style="justify-content:center; display:flex">Trabajamos con</span>
+        <h2 class="h2 reveal" data-delay="1">El stack con el que construimos.</h2>
+        <p class="lead reveal" data-delay="2">Herramientas que ya conocés, integradas con criterio. Elegimos en cada caso las que mejor se adaptan a tu contexto, sin sumar complejidad.</p>
+      </div>
+      <ul class="stack__grid reveal" data-delay="2">
+        <li class="tool">
+          <span class="tool__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="12" r="2.4"/><circle cx="19" cy="6" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M7.4 11l9.2-4M7.4 13l9.2 4"/></svg>
+          </span>
+          <span class="tool__name">n8n</span>
+        </li>
+        <li class="tool">
+          <span class="tool__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M8.4 6h7.2M6 8.4v7.2M18 8.4v7.2M8.4 18h7.2"/></svg>
+          </span>
+          <span class="tool__name">Make</span>
+        </li>
+        <li class="tool">
+          <span class="tool__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7l8 1v9M8 7v10l8 1M8 7l8 10"/></svg>
+          </span>
+          <span class="tool__name">Notion</span>
+        </li>
+        <li class="tool">
+          <span class="tool__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20h16"/><rect x="5" y="11" width="3.4" height="7"/><rect x="10.3" y="6" width="3.4" height="12"/><rect x="15.6" y="9" width="3.4" height="9"/></svg>
+          </span>
+          <span class="tool__name">Power BI</span>
+        </li>
+        <li class="tool">
+          <span class="tool__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 3L5 13h5l-1 8 8-10h-5l1-8Z"/></svg>
+          </span>
+          <span class="tool__name">Claude Code</span>
+        </li>
+        <li class="tool">
+          <span class="tool__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/><path d="M5 12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6"/></svg>
+          </span>
+          <span class="tool__name">Supabase</span>
+        </li>
+        <li class="tool">
+          <span class="tool__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m9 8-5 4 5 4M15 8l5 4-5 4"/></svg>
+          </span>
+          <span class="tool__name">Visual Studio Code</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ PARA QUIÉN ============================ -->
+  <section class="section section--white" id="paraquien">
+    <div class="container forwho">
+      <span class="eyebrow reveal" style="justify-content:center; display:flex">Para quién es</span>
+      <p class="forwho__statement reveal" data-delay="1">FLUIQ es para vos si dirigís una consultora, sentís que el crecimiento te está generando <span class="hl">caos operativo</span>, y querés dar el salto tecnológico con un partner que entienda tu negocio.</p>
+      <div class="forwho__chips">
+        <span class="chip reveal" data-delay="1">Equipos de 10 a 60 personas</span>
+        <span class="chip reveal" data-delay="2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          El crecimiento generó caos operativo
+        </span>
+        <span class="chip reveal" data-delay="3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Buscás un partner, no un software
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CTA FINAL ============================ -->
+  <section class="section cta" id="contacto">
+    <div class="cta__nodes" aria-hidden="true">
+      <svg viewBox="0 0 460 460" fill="none">
+        <g stroke="rgba(232,112,58,0.34)" stroke-width="1.3">
+          <path d="M120 90 L240 150 L360 110"/>
+          <path d="M240 150 L210 270 L340 300"/>
+          <path d="M210 270 L110 330"/>
+          <path d="M340 300 L380 200 L360 110"/>
+          <path d="M110 330 L240 390"/>
+        </g>
+        <circle class="cnode" cx="120" cy="90" r="5.5" fill="#E8703A"/>
+        <circle class="cnode" cx="240" cy="150" r="7" fill="#E8703A"/>
+        <circle class="cnode" cx="360" cy="110" r="5" fill="#E8703A"/>
+        <circle class="cnode" cx="210" cy="270" r="6" fill="#E8703A"/>
+        <circle class="cnode" cx="340" cy="300" r="5.5" fill="#E8703A"/>
+        <circle class="cnode" cx="110" cy="330" r="5" fill="#E8703A"/>
+        <circle class="cnode" cx="380" cy="200" r="4.5" fill="#E8703A"/>
+        <circle class="cnode" cx="240" cy="390" r="6" fill="#E8703A"/>
+      </svg>
+    </div>
+    <div class="container cta__grid">
+      <div class="cta__head">
+        <span class="eyebrow reveal">Hablemos</span>
+        <h2 class="h2 reveal" data-delay="1">Conversemos sobre tu operación.</h2>
+        <p class="reveal" data-delay="2">Una primera conversación, sin costo y sin compromiso, para entender si podemos ayudarte.</p>
+        <div class="contact reveal" data-delay="3">
+          <a class="contact__row" href="https://wa.me/5492226487203?text=Hola%20FLUIQ%2C%20quiero%20coordinar%20una%20conversaci%C3%B3n" target="_blank" rel="noopener noreferrer nofollow">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3 0 .2 0 .7-.2 1.2Z"/></svg>
+            <div><span>WhatsApp</span><b>Escribinos directo</b></div>
+          </a>
+          <a class="contact__row" href="mailto:santicelemink@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <div><span>Email</span><b>santicelemink@gmail.com</b></div>
+          </a>
+          <a class="contact__row" href="https://www.linkedin.com/in/santiago-celemin-635a7622a" target="_blank" rel="noopener noreferrer nofollow">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 5.9V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9V9Z"/></svg>
+            <div><span>LinkedIn</span><b>FLUIQ</b></div>
+          </a>
+        </div>
+      </div>
+
+      <form class="form form--card reveal" data-delay="2" id="leadForm" novalidate autocomplete="on">
+        <div class="form__fields" id="formFields">
+          <div class="hp-field" aria-hidden="true">
+            <label for="f-website">No completar este campo</label>
+            <input type="text" id="f-website" name="website" data-hp tabindex="-1" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="f-nombre">Nombre</label>
+            <input type="text" id="f-nombre" name="nombre" placeholder="Tu nombre" required maxlength="80" autocomplete="name" />
+            <div class="field__error">Contanos tu nombre.</div>
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input type="email" id="f-email" name="email" placeholder="vos@consultora.com" required maxlength="120" autocomplete="email" inputmode="email" />
+              <div class="field__error">Ingresá un email válido.</div>
+            </div>
+            <div class="field">
+              <label for="f-consultora">Consultora</label>
+              <input type="text" id="f-consultora" name="consultora" placeholder="Nombre de tu consultora" required maxlength="120" autocomplete="organization" />
+              <div class="field__error">Completá este dato.</div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-mensaje">Mensaje breve</label>
+            <textarea id="f-mensaje" name="mensaje" placeholder="Contanos en una o dos líneas qué te está generando fricción hoy." maxlength="1000"></textarea>
+          </div>
+          <button type="submit" class="btn btn--lg btn--block">Quiero hablar con FLUIQ <span class="arrow">→</span></button>
+        </div>
+        <div class="form__success" id="formSuccess">
+          <div class="tick">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3>Gracias. Recibimos tu mensaje.</h3>
+          <p>Te vamos a escribir en las próximas horas para coordinar una primera conversación.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__line"></div>
+    <div class="footer__top">
+      <div>
+        <a href="#top" class="brand">FLUI<b>Q</b></a>
+        <p class="footer__tag">Automatización · Estrategia Digital · Soluciones con IA</p>
+      </div>
+      <nav class="footer__nav" aria-label="Pie de página">
+        <a href="#porque">Por qué FLUIQ</a>
+        <a href="#metodo">The FLUIQ Method</a>
+        <a href="#caso">Caso real</a>
+        <a href="mailto:santicelemink@gmail.com">Contacto</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 FLUIQ. Todos los derechos reservados.</span>
+      <span>Hecho con orden y criterio.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ MODAL ============================ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalQ">
+  <div class="modal__backdrop" data-modal-close></div>
+  <div class="modal__card">
+    <button class="modal__close" data-modal-close aria-label="Cerrar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="modal__progress" id="modalProgress">
+      <i></i><i></i><i></i>
+    </div>
+
+    <!-- Paso 1 -->
+    <div class="modal__step is-active" data-step="0">
+      <div class="modal__eyebrow">Paso 1 de 3</div>
+      <h2 class="modal__q" id="modalQ">¿Qué tamaño tiene tu consultora hoy?</h2>
+      <div class="opts">
+        <button class="opt" data-next data-answer="tamano">Hasta 20 personas</button>
+        <button class="opt" data-next data-answer="tamano">Entre 20 y 40 personas</button>
+        <button class="opt" data-next data-answer="tamano">Más de 40 personas</button>
+      </div>
+    </div>
+
+    <!-- Paso 2 -->
+    <div class="modal__step" data-step="1">
+      <div class="modal__eyebrow">Paso 2 de 3</div>
+      <h2 class="modal__q">¿Cuál es hoy tu mayor punto de fricción?</h2>
+      <div class="opts">
+        <button class="opt" data-next data-answer="dolor">Procesos manuales y dispersos</button>
+        <button class="opt" data-next data-answer="dolor">Dependencia de personas clave</button>
+        <button class="opt" data-next data-answer="dolor">Falta de visibilidad de la rentabilidad</button>
+      </div>
+      <button class="modal__back" data-back>← Volver</button>
+    </div>
+
+    <!-- Paso 3 -->
+    <div class="modal__step" data-step="2">
+      <div class="modal__eyebrow">Último paso</div>
+      <h2 class="modal__q">Dejanos tus datos y coordinamos.</h2>
+      <form id="modalForm" novalidate autocomplete="on">
+        <div class="hp-field" aria-hidden="true">
+          <label for="m-website">No completar este campo</label>
+          <input type="text" id="m-website" name="website" data-hp tabindex="-1" autocomplete="off" />
+        </div>
+        <div class="form__row">
+          <div class="field">
+            <label for="m-nombre">Nombre</label>
+            <input type="text" id="m-nombre" name="nombre" placeholder="Tu nombre" required maxlength="80" autocomplete="name" />
+            <div class="field__error">Contanos tu nombre.</div>
+          </div>
+          <div class="field">
+            <label for="m-email">Email</label>
+            <input type="email" id="m-email" name="email" placeholder="vos@consultora.com" required maxlength="120" autocomplete="email" inputmode="email" />
+            <div class="field__error">Ingresá un email válido.</div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="m-consultora">Consultora</label>
+          <input type="text" id="m-consultora" name="consultora" placeholder="Nombre de tu consultora" required maxlength="120" autocomplete="organization" />
+          <div class="field__error">Completá este dato.</div>
+        </div>
+        <button type="submit" class="btn btn--lg btn--block">Quiero hablar con FLUIQ <span class="arrow">→</span></button>
+        <button class="modal__back" data-back type="button">← Volver</button>
+      </form>
+    </div>
+
+    <!-- Éxito -->
+    <div class="modal__step" data-step="3">
+      <div class="form__success is-shown" style="padding-top:0.5rem">
+        <div class="tick">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h3>Gracias. Estamos en contacto.</h3>
+        <p>Recibimos tus datos y te vamos a escribir en las próximas horas para coordinar la conversación.</p>
+        <button class="btn btn--ghost" data-modal-close style="margin-top:1.6rem">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+<!-- ============================================================
+  NOTA DE SEGURIDAD — pendiente de configurar en el HOSTING/SERVIDOR
+  (no puede hacerse desde este archivo, requiere cabeceras HTTP):
+
+   1. HTTPS obligatorio + redirección 301 de http:// a https://
+   2. Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+   3. X-Content-Type-Options: nosniff
+   4. X-Frame-Options: DENY          (evita clickjacking / embebido en iframes)
+   5. Referrer-Policy: strict-origin-when-cross-origin
+   6. Permissions-Policy: geolocation=(), camera=(), microphone=()
+   7. Si los formularios se conectan a un backend: validar y sanitizar SIEMPRE
+      del lado del servidor, sumar token CSRF y rate-limiting / captcha.
+
+  En el documento ya están aplicados: CSP, Referrer-Policy, honeypot anti-bot,
+  límites de longitud, rel="noopener noreferrer" en enlaces externos y
+  validación de entrada del lado del cliente.
+============================================================ -->
+</body>
+</html>
