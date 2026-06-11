@@ -913,7 +913,8 @@ button { font-family: inherit; cursor: pointer; }
 .modal__progress {
   display: flex;
   gap: 6px;
-  margin-bottom: 1.8rem;
+  /* Deja espacio a la derecha para no quedar debajo del botón de cerrar */
+  margin: 0 3rem 1.8rem 0;
 }
 .modal__progress i {
   height: 3px;
