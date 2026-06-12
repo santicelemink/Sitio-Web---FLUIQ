@@ -185,7 +185,7 @@ exports.handler = async function (event) {
       '<table style="border-collapse:collapse">' +
       row("Nombre", nombre) +
       row("Email", email) +
-      row("Consultora", consultora) +
+      row("Empresa", consultora) +
       (tamano ? row("Tamano", tamano) : "") +
       (dolor ? row("Punto de friccion", dolor) : "") +
       (mensaje ? row("Mensaje", mensaje) : "") +
