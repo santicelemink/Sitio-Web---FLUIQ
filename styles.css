@@ -1171,7 +1171,7 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--gray-200);
   border: 1px solid var(--gray-200);
@@ -1204,6 +1204,8 @@ button { font-family: inherit; cursor: pointer; }
   transform: translateY(-3px);
   filter: grayscale(0);
 }
+.tool--more { opacity: 0.45; pointer-events: none; }
+.tool--more:hover { transform: none; filter: grayscale(1); }
 .tool:hover .tool__mark { color: var(--orange); }
 
 /* ============================================================
@@ -1269,7 +1271,7 @@ button { font-family: inherit; cursor: pointer; }
 .form--card .form__success .tick { background: var(--orange-200); }
 
 @media (max-width: 860px) {
-  .stack__grid { grid-template-columns: repeat(3, 1fr); }
+  .stack__grid { grid-template-columns: repeat(4, 1fr); }
   .cta__nodes svg { right: -120px; opacity: 0.35; }
 }
 @media (max-width: 520px) {
