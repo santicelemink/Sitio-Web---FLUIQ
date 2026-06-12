@@ -139,10 +139,14 @@
 
   /* ============================================================
      Circuito del hero (SVG generado) — evoca el isotipo
+     Solo se renderiza en viewport >= 721px para no desperdiciar
+     CPU/GPU en mobile donde el SVG está oculto con CSS.
      ============================================================ */
   (function buildCircuit() {
     var svg = document.getElementById("circuit");
     if (!svg) return;
+    // No construir ni animar el SVG en mobile (CSS lo oculta de todas formas)
+    if (window.innerWidth <= 720) return;
     var SVGNS = "http://www.w3.org/2000/svg";
     var gT = svg.querySelector("#traces");
     var gN = svg.querySelector("#nodes");
@@ -248,6 +252,8 @@
         var speed = 0.00018 + Math.random() * 0.00008;
         var offset = Math.random();
         function move(ts) {
+          // Pausar cuando la pestaña está en segundo plano
+          if (document.hidden) { requestAnimationFrame(move); return; }
           var t = ((ts * speed) + offset) % 1;
           if (L) {
             var pt = path.getPointAtLength(t * L);
