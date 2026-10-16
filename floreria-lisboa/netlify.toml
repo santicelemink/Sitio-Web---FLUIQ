@@ -1,0 +1,10 @@
+# Florería Lisboa: deploy como sitio independiente.
+# En Netlify, configurá "Base directory" = floreria-lisboa.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
