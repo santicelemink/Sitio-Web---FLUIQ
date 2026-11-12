@@ -51,6 +51,24 @@
 html { scroll-behavior: smooth; scroll-padding-top: 94px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
+/* Skip-link accesible: oculto hasta recibir foco por teclado */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: -60px;
+  transform: translateX(-50%);
+  z-index: 200;
+  background: var(--navy);
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus { top: 0; outline: 2px solid var(--orange); outline-offset: 2px; }
+
 /* Ocultar la barra de scroll del navegador (el scroll sigue funcionando
    con rueda, trackpad, teclado y touch). */
 html {

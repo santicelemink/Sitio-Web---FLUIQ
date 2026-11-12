@@ -12,3 +12,5 @@ Disallow: /
 
 User-agent: nmap
 Disallow: /
+
+Sitemap: https://thefluiqweb.netlify.app/sitemap.xml
