@@ -76,10 +76,17 @@
     }
   }
 
+  function countTarget(el) {
+    // El valor final vive como texto del elemento (visible sin JS / para crawlers);
+    // data-to queda como respaldo. La animación lee ese valor y anima desde 0.
+    var fromText = parseFloat((el.textContent || "").replace(/[^\d.]/g, ""));
+    if (isFinite(fromText)) return fromText;
+    return parseFloat(el.getAttribute("data-to")) || 0;
+  }
   function animateCount(el) {
     if (el.__counted) return;
     el.__counted = true;
-    var to = parseFloat(el.getAttribute("data-to"));
+    var to = el.__target != null ? el.__target : countTarget(el);
     if (prefersReduced) { el.textContent = to; return; }
     var dur = 1400, start = null;
     function tick(ts) {
@@ -93,6 +100,11 @@
     requestAnimationFrame(tick);
   }
   var counters = Array.prototype.slice.call(document.querySelectorAll(".count"));
+  // Al cargar (con JS): cachear el valor final y mostrar 0 hasta que entre en viewport.
+  counters.forEach(function (c) {
+    c.__target = countTarget(c);
+    c.textContent = "0";
+  });
   function checkCounters() {
     var vh = window.innerHeight;
     counters.forEach(function (c) {

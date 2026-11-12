@@ -48,7 +48,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 94px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 /* Ocultar la barra de scroll del navegador (el scroll sigue funcionando
@@ -644,6 +644,15 @@ button { font-family: inherit; cursor: pointer; }
 .metric__num .accent { color: var(--orange); }
 .metric__label { font-size: 0.96rem; color: var(--ink-soft); line-height: 1.4; }
 
+/* Línea de contexto bajo el título del caso */
+.case__context {
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+  line-height: 1.7;
+  max-width: 760px;
+  margin: 0 0 2.6rem;
+}
+
 .case__story {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -801,6 +810,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .field.is-invalid .field__error { display: block; }
 .form .btn { margin-top: 0.6rem; }
+.form__privacy { margin: 0.8rem 0 0; font-size: 0.8rem; line-height: 1.45; color: var(--ink-soft); opacity: 0.85; text-align: center; }
 .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 
 /* Mensaje de error global del formulario (fallos de red / backend) */
@@ -1045,6 +1055,7 @@ button { font-family: inherit; cursor: pointer; }
 /* 720px — mobile */
 @media (max-width: 720px) {
   :root { --pad: 1.2rem; }
+  html { scroll-padding-top: 78px; }
 
   /* Header más compacto */
   .header { height: 64px; }
