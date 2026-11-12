@@ -77,6 +77,9 @@ button:focus-visible,
   outline-offset: 2px;
   border-radius: 3px;
 }
+/* El <main> recibe foco vía skip-link, pero no debe mostrar contorno */
+main#top:focus,
+main#top:focus-visible { outline: none; }
 
 /* Ocultar la barra de scroll del navegador (el scroll sigue funcionando
    con rueda, trackpad, teclado y touch). */
