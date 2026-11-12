@@ -69,6 +69,15 @@ html { scroll-behavior: smooth; scroll-padding-top: 94px; }
 }
 .skip-link:focus { top: 0; outline: 2px solid var(--orange); outline-offset: 2px; }
 
+/* Foco por teclado visible y de marca (no afecta el click con mouse) */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
 /* Ocultar la barra de scroll del navegador (el scroll sigue funcionando
    con rueda, trackpad, teclado y touch). */
 html {
@@ -421,7 +430,9 @@ button { font-family: inherit; cursor: pointer; }
   padding: 2rem 1.7rem 1.9rem;
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
 }
-.pcard:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: transparent; }
+/* .reveal.pcard para ganarle en especificidad a .reveal.in (que fijaba transform:none) */
+.pcard.reveal:hover,
+.pcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
 .pcard__icon {
   width: 46px; height: 46px;
   color: var(--orange);
@@ -908,6 +919,7 @@ button { font-family: inherit; cursor: pointer; }
   outline: none;
   border-color: var(--orange);
   background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 0 3px rgba(232, 112, 58, 0.22);
 }
 .field textarea { resize: vertical; min-height: 96px; }
 .field.is-invalid input,
@@ -980,7 +992,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .footer__nav { display: flex; gap: 1.8rem; flex-wrap: wrap; }
 .footer__nav a { font-size: 0.94rem; color: var(--on-navy-soft); transition: color 0.25s var(--ease); }
-.footer__nav a:hover { color: var(--orange); }
+.footer__nav a:hover { color: var(--orange); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .footer__bottom {
   margin-top: 2.6rem;
   padding-top: 1.6rem;
@@ -1322,7 +1334,7 @@ button { font-family: inherit; cursor: pointer; }
 .tool:hover {
   color: var(--navy);
   background: #fff;
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   filter: grayscale(0);
 }
 .tool--more { opacity: 0.45; pointer-events: none; }
