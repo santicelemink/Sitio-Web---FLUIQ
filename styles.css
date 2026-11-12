@@ -653,6 +653,98 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0 0 2.6rem;
 }
 
+/* ============================================================
+   MAPA DEL ECOSISTEMA (dentro del caso)
+   ============================================================ */
+.eco { margin: 0 0 3.4rem; }
+.eco .eyebrow { margin-bottom: 0.7rem; }
+.eco-title { font-size: clamp(1.3rem, 2.6vw, 1.8rem); font-weight: 700; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 0.4rem; }
+.eco-sub { color: var(--ink-soft); font-size: 1rem; line-height: 1.6; max-width: 660px; margin-bottom: 2rem; }
+
+.eco-map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1160 / 680;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  background: #fff;
+  background-image: radial-gradient(circle, rgba(27, 58, 92, 0.07) 1.1px, transparent 1.4px);
+  background-size: 26px 26px;
+  overflow: hidden;
+}
+.eco-links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+
+.eco-colcap { position: absolute; top: 12px; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); opacity: 0.5; z-index: 2; }
+.eco-colcap--e { left: 3.5%; }
+.eco-colcap--o { left: 40%; }
+.eco-colcap--p { left: 60%; }
+.eco-colcap--s { right: 4%; }
+
+.eco-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.6rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.eco-node:hover { border-color: var(--orange); box-shadow: 0 10px 26px rgba(16, 36, 56, 0.12); }
+.eco-node svg { width: 20px; height: 20px; flex: none; color: var(--navy); }
+.eco-node b { font-size: 0.76rem; font-weight: 600; line-height: 1.15; color: var(--ink); display: block; }
+.eco-node small { font-weight: 400; font-size: 0.64rem; color: var(--ink-soft); }
+
+.eco-hub {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  background: var(--navy);
+  border: 1px solid var(--navy);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 0.9rem 0.7rem;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(14, 34, 54, 0.28);
+  z-index: 4;
+}
+.eco-hub::after { content: ""; position: absolute; inset: -3px; border-radius: 16px; border: 1.5px solid rgba(232, 112, 58, 0.5); }
+.eco-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); display: inline-block; margin-bottom: 0.35rem; box-shadow: 0 0 0 4px rgba(232, 112, 58, 0.25); }
+.eco-hub svg { width: 24px; height: 24px; color: #fff; display: block; margin: 0 auto 0.25rem; }
+.eco-hub b { font-size: 0.9rem; font-weight: 700; display: block; }
+.eco-hub small { font-size: 0.66rem; color: rgba(255, 255, 255, 0.66); }
+
+/* Posiciones (desktop) */
+.eco--horas  { left: 11%; top: 14%; }
+.eco--sap    { left: 11%; top: 36%; }
+.eco--sheets { left: 11%; top: 58%; }
+.eco--cron   { left: 11%; top: 80%; }
+.eco--make   { left: 43%; top: 47%; }
+.eco--db     { left: 66%; top: 24%; }
+.eco--excel  { left: 66%; top: 58%; }
+.eco--pbi    { left: 88%; top: 15%; }
+.eco--rep    { left: 88%; top: 41%; }
+.eco--wa     { left: 88%; top: 67%; }
+.eco--mail   { left: 88%; top: 89%; }
+
+.eco-link { fill: none; stroke: var(--gray-200); stroke-width: 1.8; }
+.eco-link.lit { stroke: rgba(232, 112, 58, 0.32); }
+.eco-pulse { fill: var(--orange); }
+
+/* Mobile: nodos apilados en columna, sin líneas ni animación */
+@media (max-width: 720px) {
+  .eco-map { aspect-ratio: auto; display: flex; flex-direction: column; gap: 0.6rem; padding: 1rem; background-image: none; }
+  .eco-links, .eco-colcap { display: none; }
+  .eco-node, .eco-hub { position: static; transform: none; width: 100%; }
+  .eco-hub { padding: 0.8rem; }
+  .eco-hub .eco-dot { display: none; }
+}
+
 .case__story {
   display: grid;
   grid-template-columns: 1fr 1fr;

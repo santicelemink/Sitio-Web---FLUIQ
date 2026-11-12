@@ -281,6 +281,69 @@
   })();
 
   /* ============================================================
+     Mapa del ecosistema (caso) — conectores entre nodos + pulsos.
+     Los nodos y su posición viven en el HTML/CSS (se ven sin JS);
+     acá solo dibujamos las líneas. En mobile se apila y no se dibuja.
+     ============================================================ */
+  (function buildEcoMap() {
+    var map = document.getElementById("ecoMap");
+    if (!map) return;
+    var svg = document.getElementById("ecoLinks");
+    var SVGNS = "http://www.w3.org/2000/svg";
+    // [origen, destino, iluminado]
+    var EDGES = [
+      ["horas", "make", 1], ["sap", "make", 1], ["sheets", "make", 0], ["cron", "make", 0],
+      ["make", "db", 1], ["make", "excel", 1],
+      ["db", "pbi", 0], ["excel", "pbi", 1], ["excel", "rep", 0], ["pbi", "rep", 1],
+      ["make", "wa", 1], ["make", "mail", 0]
+    ];
+    function nodeEl(id) { return map.querySelector('[data-eco="' + id + '"]'); }
+
+    function draw() {
+      // En mobile los nodos se apilan (CSS); no dibujamos líneas.
+      if (window.innerWidth <= 720) { svg.innerHTML = ""; return; }
+      var W = map.clientWidth, H = map.clientHeight;
+      if (!W || !H) return;
+      svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+      svg.innerHTML = "";
+      var mr = map.getBoundingClientRect();
+      EDGES.forEach(function (e, i) {
+        var a = nodeEl(e[0]), b = nodeEl(e[1]);
+        if (!a || !b) return;
+        var ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+        var p1 = { x: ra.right - mr.left, y: ra.top - mr.top + ra.height / 2 };
+        var p2 = { x: rb.left - mr.left, y: rb.top - mr.top + rb.height / 2 };
+        var dx = Math.max(40, (p2.x - p1.x) * 0.5);
+        var d = "M" + p1.x + " " + p1.y + " C" + (p1.x + dx) + " " + p1.y +
+                ", " + (p2.x - dx) + " " + p2.y + ", " + p2.x + " " + p2.y;
+        var path = document.createElementNS(SVGNS, "path");
+        path.setAttribute("d", d);
+        path.setAttribute("class", "eco-link" + (e[2] ? " lit" : ""));
+        path.setAttribute("id", "eco-e" + i);
+        svg.appendChild(path);
+        if (e[2] && !prefersReduced) {
+          var c = document.createElementNS(SVGNS, "circle");
+          c.setAttribute("r", "3.4");
+          c.setAttribute("class", "eco-pulse");
+          var am = document.createElementNS(SVGNS, "animateMotion");
+          am.setAttribute("dur", (2.2 + (i % 5) * 0.3) + "s");
+          am.setAttribute("repeatCount", "indefinite");
+          am.setAttribute("begin", (i * 0.35) + "s");
+          var mp = document.createElementNS(SVGNS, "mpath");
+          mp.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#eco-e" + i);
+          mp.setAttribute("href", "#eco-e" + i);
+          am.appendChild(mp); c.appendChild(am); svg.appendChild(c);
+        }
+      });
+    }
+    draw();
+    requestAnimationFrame(draw);
+    window.addEventListener("load", draw);
+    window.addEventListener("resize", draw, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  })();
+
+  /* ============================================================
      Modal multi-paso "Hablemos"
      ============================================================ */
   var modal = document.getElementById("modal");
