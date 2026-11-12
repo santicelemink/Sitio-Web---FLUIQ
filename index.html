@@ -257,6 +257,70 @@
         </div>
       </div>
 
+      <div class="eco reveal">
+        <span class="eyebrow">El mapa del ecosistema</span>
+        <h3 class="eco-title">Así quedó conectada la operación</h3>
+        <p class="eco-sub">Múltiples fuentes entran, Make orquesta cada paso y la información se ramifica sola hacia datos, facturación, tableros, dirección y avisos al equipo.</p>
+
+        <div class="eco-map" id="ecoMap">
+          <span class="eco-colcap eco-colcap--e">Entradas</span>
+          <span class="eco-colcap eco-colcap--o">Orquesta</span>
+          <span class="eco-colcap eco-colcap--p">Procesa</span>
+          <span class="eco-colcap eco-colcap--s">Salidas</span>
+          <svg class="eco-links" id="ecoLinks" preserveAspectRatio="none" aria-hidden="true"></svg>
+
+          <div class="eco-node eco--horas" data-eco="horas">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span><b>Carga de horas</b><small>Consultores</small></span>
+          </div>
+          <div class="eco-node eco--sap" data-eco="sap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><rect x="3" y="11" width="18" height="5" rx="1"/><path d="M6.5 6.5h.01M6.5 13.5h.01"/></svg>
+            <span><b>SAP</b><small>ERP</small></span>
+          </div>
+          <div class="eco-node eco--sheets" data-eco="sheets">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+            <span><b>Google Sheets</b><small>Planilla de horas</small></span>
+          </div>
+          <div class="eco-node eco--cron" data-eco="cron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M12 13v3l2 1"/></svg>
+            <span><b>Scheduler</b><small>Disparador diario</small></span>
+          </div>
+
+          <div class="eco-hub eco--make" data-eco="make">
+            <span class="eco-dot" aria-hidden="true"></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M8.4 6h7.2M6 8.4v7.2M18 8.4v7.2M8.4 18h7.2"/></svg>
+            <b>Make</b>
+            <small>Orquestador</small>
+          </div>
+
+          <div class="eco-node eco--db" data-eco="db">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/><path d="M5 12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6"/></svg>
+            <span><b>Base de datos</b><small>Registro central</small></span>
+          </div>
+          <div class="eco-node eco--excel" data-eco="excel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+            <span><b>Excel facturación</b><small>Horas + tarifa</small></span>
+          </div>
+
+          <div class="eco-node eco--pbi" data-eco="pbi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h16"/><rect x="5" y="11" width="3.4" height="7"/><rect x="10.3" y="6" width="3.4" height="12"/><rect x="15.6" y="9" width="3.4" height="9"/></svg>
+            <span><b>Power BI</b><small>Rentabilidad</small></span>
+          </div>
+          <div class="eco-node eco--rep" data-eco="rep">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+            <span><b>Reporte a Dirección</b><small>Automático</small></span>
+          </div>
+          <div class="eco-node eco--wa" data-eco="wa">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H9l-4 3V5Z"/></svg>
+            <span><b>WhatsApp</b><small>Aviso al equipo</small></span>
+          </div>
+          <div class="eco-node eco--mail" data-eco="mail">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
+            <span><b>Email</b><small>Notificación</small></span>
+          </div>
+        </div>
+      </div>
+
       <div class="case__story">
         <p class="reveal">Antes, la operación dependía de una planilla central que concentraba todo y no daba abasto: información duplicada, cargas manuales y nadie con una foto clara de la rentabilidad. Hoy SAPCESS trabaja sobre un ecosistema digital integrado donde cada persona ve exactamente lo que necesita y buena parte del trabajo operativo sucede solo, en segundo plano.</p>
         <div class="case__quote reveal" data-delay="1">
